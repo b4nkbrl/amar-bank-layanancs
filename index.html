@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Menyusun latar belakang gambar agar memenuhi layar */
+    body, html {
+      height: 100%;
+      margin: 0;
+      background: url('https://i.ibb.co.com/VMBkDCS/Screenshot-20241026-173941-Amar-Bank.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-position: top;
+      overflow: hidden;
+    }
+
+    /* Gaya untuk animasi loading spinner */
+    .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(50, 205, 50, 0.3); /* Warna hijau muda transparan */
+      border-top: 5px solid #32CD32; /* Warna hijau solid */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Animasi putaran */
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Menyembunyikan spinner saat fade-out */
+    .fade-out {
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="spinner" class="spinner"></div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Tunggu 2 detik, lalu mulai transisi menghilang dan pindah halaman
+    setTimeout(function() {
+      document.body.classList.add('fade-out'); // Tambahkan kelas fade-out ke body
+      document.getElementById('spinner').classList.add('fade-out'); // Tambahkan kelas fade-out ke spinner
+      setTimeout(function() {
+        window.location.href = 'halaman-masuk-daftar.html'; // Ganti dengan URL halaman berikutnya
+      }, 1500); // Waktu transisi untuk menghilang (1.5 detik)
+    }, 2000); // Tunggu 2 detik sebelum mulai transisi
+  </script>
+
+</body>
+</html>
